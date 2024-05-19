@@ -2,6 +2,12 @@
 name = "cvm"
 version = "0.1.0"
 edition = "2021"
+authors = ["abut0n"]
+description = "cvm:https://arxiv.org/abs/2301.10191v2"
+repository = "https://github.com/marcuccio/cvm"
+readme = "README.md"
+license = "GPL-3.0-only"
 
 [dependencies]
+log = "0.4.21"
 rand = "0.8.5"
