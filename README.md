@@ -4,6 +4,9 @@ Rust implementation of [Distinct Elements in Streams: An Algorithm for the (Text
 ## Abstract
 Given a data stream A=⟨a1,a2,…,am⟩ of m elements where each a_i∈[n], the Distinct Elements problem is to estimate the number of distinct elements in A. Distinct Elements has been a subject of theoretical and empirical investigations over the past four decades resulting in space optimal algorithms for it.All the current state-of-the-art algorithms are, however, beyond the reach of an undergraduate textbook owing to their reliance on the usage of notions such as pairwise independence and universal hash functions. We present a simple, intuitive, sampling-based space-efficient algorithm whose description and the proof are accessible to undergraduates with the knowledge of basic probability theory.
 
+## My use case
+I find it handy to evaluate different wordlists and their union.
+
 ## How to use
 
 ```bash
