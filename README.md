@@ -1,4 +1,4 @@
-# CMV
+# CVM
 Rust implementation of [Distinct Elements in Streams: An Algorithm for the (Text) Book](https://arxiv.org/abs/2301.10191v2)
 
 ## Abstract
