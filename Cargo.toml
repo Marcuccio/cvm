@@ -1,6 +1,6 @@
 [package]
 name = "cvm"
-version = "0.5.0"
+version = "0.5.1"
 edition = "2021"
 authors = ["abut0n"]
 description = "Rust implementation of Distinct Elements in Streams"
