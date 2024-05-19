@@ -4,7 +4,7 @@ use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::PathBuf;
 
-pub fn estimate_from_many(paths: &[PathBuf], epsilon: f64, delta: f64) -> io::Result<usize> {
+pub fn estimate_from_many(paths: &[PathBuf], delta: f64, epsilon: f64) -> io::Result<usize> {
     let m = count_rows(paths)?;
     
     let mut rng = rand::thread_rng();
@@ -46,7 +46,7 @@ fn count_rows(paths: &[PathBuf]) -> io::Result<usize> {
     Ok(total_lines)
 }
 
-pub fn estimate(source: Vec<String>, epsilon: f64, delta: f64) -> usize {
+pub fn estimate(source: Vec<String>, delta: f64, epsilon: f64) -> usize {
     let mut rng = rand::thread_rng();
 
     let mut x: HashSet<String> = HashSet::new();

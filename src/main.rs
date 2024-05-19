@@ -1,19 +1,31 @@
-use std::{env, io};
 use std::path::PathBuf;
+use clap::Parser;
 use log::{info, warn};
 
+#[derive(Parser, Debug)]
+#[clap(author, version, about, long_about = None)]
+struct Cli {
+    /// The files to use
+    #[clap(required = true)]
+    paths: Vec<PathBuf>,
+
+    /// Outputs in CSV format
+    #[clap(short, long)]
+    delta: Option<f64>,
+
+    /// Outputs in JSON format
+    #[clap(short, long)]
+    epsilon: Option<f64>,
+}
+
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    if args.len() < 2 {
-        eprintln!("Usage: {} <file_path1> <file_path2> ...", args[0]);
-        std::process::exit(1);
-    }
+    let cli = Cli::parse();
 
-    let paths: Vec<PathBuf> = args[1..].iter().map(PathBuf::from).collect();
-    let epsilon = 0.1;
-    let delta = 0.01;
+    let paths: Vec<PathBuf> = cli.paths.iter().map(PathBuf::from).collect();
+    let delta = cli.delta.unwrap_or(0.001);
+    let epsilon = cli.delta.unwrap_or(0.1);
 
-    match cvm::estimate_from_many(&paths, epsilon, delta) {
+    match cvm::estimate_from_many(&paths, delta, epsilon) {
         Ok(estimate) => {
             warn!("Use with caution, as this is an estimation.");
             info!("{}", estimate)
