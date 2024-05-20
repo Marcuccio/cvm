@@ -9,11 +9,11 @@ struct Cli {
     #[clap(required = true)]
     paths: Vec<PathBuf>,
 
-    /// Outputs in CSV format
+    /// delta
     #[clap(short, long)]
     delta: Option<f64>,
 
-    /// Outputs in JSON format
+    /// epsilon
     #[clap(short, long)]
     epsilon: Option<f64>,
 }
