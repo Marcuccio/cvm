@@ -19,8 +19,8 @@ Arguments:
   <PATHS>...  The files to use
 
 Options:
-  -d, --delta <DELTA>      Outputs in CSV format
-  -e, --epsilon <EPSILON>  Outputs in JSON format
+  -d, --delta <DELTA>      
+  -e, --epsilon <EPSILON>  
   -h, --help               Print help
   -V, --version            Print version
 
