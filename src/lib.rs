@@ -1,5 +1,6 @@
 use rand::Rng;
 use std::collections::HashSet;
+use std::hash::Hash;
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::PathBuf;
@@ -46,17 +47,21 @@ fn count_rows(paths: &[PathBuf]) -> io::Result<usize> {
     Ok(total_lines)
 }
 
-pub fn estimate(source: Vec<String>, delta: f64, epsilon: f64) -> usize {
+fn estimate<T>(source: impl IntoIterator<Item = T>, delta: f64, epsilon: f64) -> usize
+where
+T: PartialOrd + PartialEq + Eq + Hash + Clone, {
     let mut rng = rand::thread_rng();
 
-    let mut x: HashSet<String> = HashSet::new();
+    let source_vec: Vec<T> = source.into_iter().collect();
+
+    let mut x: HashSet<T> = HashSet::new();
     let mut p: f64 = 1 as f64;
-    let m = source.len();
+    let m = source_vec.len();
 
     let thresh = ((12.0 / epsilon.powi(2)) * (8.0 * m as f64 / delta).log2()).ceil() as usize;
 
 
-    for el in source.iter() {
+    for el in source_vec.iter() {
         x.remove(el);
 
         if rng.gen_bool(p) {
